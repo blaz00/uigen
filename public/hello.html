@@ -3,401 +3,492 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alex Chen — Strategy Consultant</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>James Wellington — Strategic Advisory</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #f5f4f0;
-      --text: #0f0f0d;
-      --muted: #888580;
-      --accent: #5c47f5;
-      --accent-light: #ede9ff;
-      --white: #fefefe;
-      --border: #e2e0da;
-      --green: #00c472;
-      --pink: #ff4d8d;
+      --navy: #0b1f3a;
+      --navy-mid: #1a3558;
+      --blue: #1d4ed8;
+      --blue-light: #eff6ff;
+      --text: #0b1f3a;
+      --muted: #64748b;
+      --muted2: #94a3b8;
+      --border: #e2e8f0;
+      --bg: #ffffff;
+      --bg2: #f8fafc;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
-      position: fixed;
-      top: 1rem; left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-      width: calc(100% - 3rem);
-      max-width: 900px;
-      padding: 0.875rem 1.5rem;
-      background: rgba(254,254,254,0.85);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5vw;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
     }
 
-    .logo {
-      font-size: 1rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--navy);
+      letter-spacing: -0.3px;
     }
 
-    .logo span { color: var(--accent); }
+    .nav-logo span { color: var(--blue); }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+    .nav-center {
+      display: flex; gap: 2.5rem; list-style: none;
     }
 
-    .nav-link {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--muted);
-      padding: 0.4rem 0.75rem;
-      border-radius: 8px;
-      transition: background 0.15s, color 0.15s;
+    .nav-center a {
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.3px; color: var(--muted);
+      transition: color 0.2s;
     }
 
-    .nav-link:hover { background: var(--border); color: var(--text); }
+    .nav-center a:hover { color: var(--navy); }
 
-    .nav-btn {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--white);
-      background: var(--text);
-      padding: 0.5rem 1.1rem;
-      border-radius: 10px;
-      transition: opacity 0.15s;
+    .nav-cta {
+      padding: 0.6rem 1.4rem;
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.82rem; font-weight: 600;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+      transition: background 0.2s;
     }
 
-    .nav-btn:hover { opacity: 0.8; }
+    .nav-cta:hover { background: var(--navy-mid); }
 
-    /* HERO */
+    /* ── HERO ── */
     .hero {
-      padding: 9rem 1.5rem 4rem;
-      max-width: 900px;
+      padding: 10rem 5vw 6rem;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 5rem;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 0.35rem 0.9rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--muted);
-      margin-bottom: 2rem;
-    }
-
-    .status-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    .hero h1 {
-      font-size: clamp(3.2rem, 7vw, 6rem);
-      font-weight: 900;
-      line-height: 1.0;
-      letter-spacing: -3px;
+    .hero-eyebrow {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--blue);
       margin-bottom: 1.5rem;
     }
 
-    .hero h1 .accent { color: var(--accent); }
-    .hero h1 .strike {
-      text-decoration: line-through;
-      color: var(--muted);
-      font-weight: 300;
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
     }
+
+    h1 em { font-style: italic; color: var(--blue); }
 
     .hero-sub {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 480px;
-      line-height: 1.65;
+      font-size: 1.05rem; color: var(--muted);
+      line-height: 1.75; max-width: 520px;
       margin-bottom: 2.5rem;
-      font-weight: 400;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-bottom: 3.5rem;
-    }
+    .hero-btns { display: flex; gap: 1rem; }
 
     .btn-primary {
-      padding: 0.875rem 1.75rem;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.9rem;
-      font-weight: 700;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
-      box-shadow: 0 4px 20px rgba(92,71,245,0.35);
+      padding: 0.9rem 2rem;
+      background: var(--navy); color: #fff;
+      font-size: 0.85rem; font-weight: 600;
+      border-radius: 4px; border: none;
+      cursor: pointer; letter-spacing: 0.3px;
+      transition: background 0.2s, transform 0.15s;
     }
 
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(92,71,245,0.45); }
+    .btn-primary:hover { background: var(--navy-mid); transform: translateY(-1px); }
 
-    .btn-outline {
-      padding: 0.875rem 1.75rem;
-      background: var(--white);
-      color: var(--text);
-      font-size: 0.9rem;
-      font-weight: 600;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: background 0.15s;
+    .btn-secondary {
+      padding: 0.9rem 2rem;
+      background: transparent; color: var(--navy);
+      font-size: 0.85rem; font-weight: 600;
+      border-radius: 4px;
+      border: 1.5px solid var(--border);
+      cursor: pointer; letter-spacing: 0.3px;
+      transition: border-color 0.2s, background 0.2s;
     }
 
-    .btn-outline:hover { background: var(--border); }
-
-    /* BENTO GRID */
-    .bento {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 1.5rem 4rem;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto;
-      gap: 1rem;
-    }
-
-    .card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 1.75rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-
-    /* Card spans */
-    .card-wide { grid-column: span 2; }
-    .card-tall { grid-row: span 2; }
-    .card-full { grid-column: span 3; }
-
-    .card-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .card h2 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      line-height: 1.3;
-      margin-bottom: 0.75rem;
-    }
-
-    .card p {
-      font-size: 0.875rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    /* Stat card */
-    .stat-big {
-      font-size: 3.5rem;
-      font-weight: 900;
-      letter-spacing: -2px;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 0.25rem;
-    }
-
-    .stat-big span { color: var(--accent); }
+    .btn-secondary:hover { border-color: var(--navy); background: var(--bg2); }
 
     /* Profile card */
     .profile-card {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
     }
 
-    .profile-card .card-label { color: rgba(255,255,255,0.6); }
-    .profile-card h2 { color: #fff; }
-    .profile-card p { color: rgba(255,255,255,0.75); }
-
-    .avatar {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      border: 2px solid rgba(255,255,255,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 1.25rem;
+    .profile-img {
+      width: 100%; aspect-ratio: 3/3.5;
+      background: var(--bg2);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: var(--muted2); gap: 0.5rem;
+      font-size: 0.72rem; letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
     }
 
-    /* Services tags */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.25rem;
+    .profile-img svg { opacity: 0.25; }
+
+    .profile-info { padding: 1.25rem 1.5rem; }
+    .profile-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 0.25rem;
+    }
+    .profile-title { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      border-bottom: 1px solid var(--border);
+      background: var(--navy);
     }
 
-    .tag {
-      padding: 0.4rem 0.9rem;
-      border-radius: 100px;
-      font-size: 0.78rem;
-      font-weight: 600;
+    .stats-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 5vw;
+      display: grid; grid-template-columns: repeat(4, 1fr);
     }
 
-    .tag-purple { background: var(--accent-light); color: var(--accent); }
-    .tag-green { background: #e0faf0; color: #00a05d; }
-    .tag-pink { background: #ffe8f2; color: #d43075; }
-    .tag-gray { background: #f0efe9; color: var(--muted); }
-
-    /* Testimonial */
-    .testi-text {
-      font-size: 1rem;
-      line-height: 1.7;
-      font-weight: 400;
-      margin-bottom: 1.25rem;
-      color: var(--text);
+    .stat-item {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
     }
 
-    .testi-author {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+    .stat-item:last-child { border-right: none; }
+
+    .stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 900;
+      color: #fff; letter-spacing: -1.5px;
+      line-height: 1;
     }
 
-    .testi-avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: var(--accent-light);
-      border: 1px solid rgba(92,71,245,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: var(--accent);
+    .stat-label {
+      font-size: 0.78rem; color: rgba(255,255,255,0.5);
+      font-weight: 500; margin-top: 0.5rem; letter-spacing: 0.3px;
     }
 
-    .testi-name { font-size: 0.85rem; font-weight: 700; }
-    .testi-role { font-size: 0.75rem; color: var(--muted); }
-
-    /* CTA card */
-    .cta-card {
-      background: var(--text);
-      border-color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
+    /* ── SECTION ── */
+    .section {
+      padding: 6rem 5vw;
+      border-bottom: 1px solid var(--border);
+      max-width: 1200px; margin: 0 auto;
     }
 
-    .cta-card h2 { color: var(--white); font-size: 1.6rem; margin: 0; }
-    .cta-card p { color: #888; margin: 0.4rem 0 0; }
+    .section-full {
+      padding: 6rem 5vw;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
 
-    .cta-card .btn-primary { flex-shrink: 0; white-space: nowrap; }
+    .section-full .section-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
 
-    /* Process list */
-    .process-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+    .label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 800; letter-spacing: -0.8px;
+      color: var(--navy); line-height: 1.2;
+    }
+
+    h2 em { font-style: italic; color: var(--blue); }
+
+    .section-sub {
+      font-size: 1rem; color: var(--muted);
+      line-height: 1.7; max-width: 520px;
       margin-top: 1rem;
     }
 
-    .process-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-
-    .process-num {
-      width: 28px; height: 28px;
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 3.5rem;
       border-radius: 8px;
-      background: var(--accent-light);
-      color: var(--accent);
-      font-size: 0.75rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
+      overflow: hidden;
     }
 
-    .process-item-title { font-size: 0.875rem; font-weight: 700; }
-    .process-item-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+    .service {
+      background: var(--bg);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
+    }
 
-    /* Logos */
-    .logos-row {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+    .service:hover { background: var(--bg2); }
+
+    .service-num {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 2px; color: var(--blue);
+      margin-bottom: 1.25rem;
+    }
+
+    .service h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .service p {
+      font-size: 0.875rem; color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .service-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem;
+    }
+
+    .stag {
+      padding: 0.3rem 0.7rem;
+      background: var(--blue-light); color: var(--blue);
+      font-size: 0.7rem; font-weight: 600;
+      border-radius: 3px; letter-spacing: 0.3px;
+    }
+
+    /* ── TWO COL ── */
+    .two-col {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: start;
+    }
+
+    /* ── CREDENTIALS ── */
+    .cred-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 2rem; }
+
+    .cred {
+      display: flex; gap: 1.25rem;
+      padding: 1.5rem; background: var(--bg);
+      align-items: flex-start;
+      transition: background 0.2s;
+    }
+
+    .cred:hover { background: var(--bg2); }
+
+    .cred-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: var(--blue-light);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+
+    .cred-title { font-size: 0.875rem; font-weight: 600; color: var(--navy); }
+    .cred-sub { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ── TESTIMONIALS ── */
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 3.5rem;
+    }
+
+    .testi {
+      padding: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .testi:hover {
+      border-color: #bfdbfe;
+      box-shadow: 0 4px 24px rgba(29,78,216,0.07);
+    }
+
+    .stars { color: #f59e0b; font-size: 0.85rem; margin-bottom: 1rem; }
+
+    .testi-body {
+      font-size: 0.9rem; color: var(--muted);
+      line-height: 1.75; font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+
+    .tav {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--navy); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .tname { font-size: 0.85rem; font-weight: 700; color: var(--navy); }
+    .trole { font-size: 0.75rem; color: var(--muted); }
+
+    /* ── LOGOS ── */
+    .logo-bar {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 5vw;
+      display: flex; align-items: center; gap: 2.5rem;
+    }
+
+    .logo-bar-label {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--muted2); white-space: nowrap; flex-shrink: 0;
+    }
+
+    .logo-divider {
+      width: 1px; height: 20px; background: var(--border); flex-shrink: 0;
+    }
+
+    .logo-names {
+      display: flex; gap: 3rem; flex-wrap: wrap;
+    }
+
+    .logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--muted2); transition: color 0.2s;
+    }
+
+    .logo-name:hover { color: var(--navy); }
+
+    /* ── PROCESS ── */
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 8px;
+      overflow: hidden; margin-top: 3.5rem;
+    }
+
+    .step {
+      padding: 2.5rem 1.75rem;
+      background: var(--bg);
+      position: relative;
+    }
+
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 900;
+      color: var(--blue-light); line-height: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 0.6rem;
+    }
+
+    .step p { font-size: 0.825rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--navy);
+      padding: 6rem 5vw;
+      text-align: center;
+    }
+
+    .cta-inner { max-width: 640px; margin: 0 auto; }
+
+    .cta-label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-bottom: 1rem;
+    }
+
+    .cta-section h2 {
+      color: #fff; margin-bottom: 1rem; font-size: clamp(2rem, 3vw, 3rem);
+    }
+
+    .cta-section h2 em { color: #93c5fd; }
+
+    .cta-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.55);
+      line-height: 1.7; margin-bottom: 2.5rem;
+    }
+
+    .btn-white {
+      display: inline-block;
+      padding: 1rem 2.25rem;
+      background: #fff; color: var(--navy);
+      font-size: 0.9rem; font-weight: 700;
+      border-radius: 4px;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .btn-white:hover { opacity: 0.92; transform: translateY(-1px); }
+
+    .cta-note {
+      font-size: 0.78rem; color: rgba(255,255,255,0.3);
       margin-top: 1.25rem;
     }
 
-    .logo-pill {
-      padding: 0.4rem 0.9rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--muted);
-    }
-
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 2.5rem 5vw;
       border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
     }
 
-    footer p { font-size: 0.8rem; color: var(--muted); }
-    footer a { font-size: 0.8rem; color: var(--muted); transition: color 0.15s; }
-    footer a:hover { color: var(--text); }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700; color: var(--navy);
+    }
 
-    @media (max-width: 700px) {
-      nav { top: 0.75rem; width: calc(100% - 1.5rem); }
-      .hero h1 { letter-spacing: -2px; }
-      .bento { grid-template-columns: 1fr; }
-      .card-wide, .card-tall, .card-full { grid-column: span 1; grid-row: span 1; }
-      .cta-card { flex-direction: column; align-items: flex-start; }
-      footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+    .footer-logo span { color: var(--blue); }
+
+    .footer-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem; color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--navy); }
+
+    .footer-copy { font-size: 0.78rem; color: var(--muted2); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 8rem; }
+      .profile-card { max-width: 340px; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; gap: 3rem; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .nav-center { display: none; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .logo-names { gap: 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -405,167 +496,272 @@
 
   <!-- NAV -->
   <nav>
-    <div class="logo">Alex<span>.</span></div>
-    <div class="nav-right">
-      <a href="#work" class="nav-link">Work</a>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#contact" class="nav-btn">Let's talk →</a>
-    </div>
+    <div class="nav-logo">J<span>.</span>Wellington</div>
+    <ul class="nav-center">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#process">Process</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Schedule a consultation</a>
   </nav>
 
   <!-- HERO -->
-  <div class="hero">
-    <div class="status-badge">
-      <span class="status-dot"></span>
-      Available for new projects · Q3 2026
-    </div>
-    <h1>
-      Strategy<br>
-      that actually<br>
-      <span class="accent">works.</span>
-    </h1>
-    <p class="hero-sub">
-      I help ambitious companies figure out what to do next — and actually do it. No fluff, no 300-slide decks. Just clear thinking and real outcomes.
-    </p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Book a free call</a>
-      <a href="#work" class="btn-outline">See my work</a>
+  <div style="border-bottom:1px solid var(--border)">
+    <div class="hero">
+      <div>
+        <div class="hero-eyebrow">Senior Strategy Advisor · Independent Practice</div>
+        <h1>
+          Strategic clarity<br>
+          for leaders who<br>
+          need to <em>move.</em>
+        </h1>
+        <p class="hero-sub">
+          I advise boards, founders, and executive teams on the decisions that define their next decade.
+          Rigorous analysis, honest counsel, measurable outcomes.
+        </p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary">Schedule a consultation</a>
+          <a href="#services" class="btn-secondary">View services</a>
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-img">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span>Add your photo here</span>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name">James Wellington</div>
+          <div class="profile-title">Senior Strategy Advisor · Ex-McKinsey Partner</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- BENTO -->
-  <div class="bento" id="work">
-
-    <!-- Profile -->
-    <div class="card profile-card">
-      <div class="avatar">👋</div>
-      <div class="card-label">Hey, I'm Alex</div>
-      <h2>Strategy consultant, ex-McKinsey</h2>
-      <p>10 years helping companies grow. Now doing it on my own terms.</p>
+  <!-- LOGO BAR -->
+  <div class="logo-bar">
+    <div class="logo-bar-label">Trusted by leaders from</div>
+    <div class="logo-divider"></div>
+    <div class="logo-names">
+      <span class="logo-name">Goldman Sachs</span>
+      <span class="logo-name">McKinsey & Co.</span>
+      <span class="logo-name">Blackstone</span>
+      <span class="logo-name">Sequoia Capital</span>
+      <span class="logo-name">JPMorgan</span>
     </div>
+  </div>
 
-    <!-- Stat: value -->
-    <div class="card">
-      <div class="card-label">Value Created</div>
-      <div class="stat-big">$1.2<span>B</span></div>
-      <p>across 30+ engagements in tech, finance & consumer.</p>
-    </div>
-
-    <!-- Stat: clients -->
-    <div class="card">
-      <div class="card-label">Happy Clients</div>
-      <div class="stat-big">30<span>+</span></div>
-      <p>Series A to Fortune 500. 94% come back for more.</p>
-    </div>
-
-    <!-- Services wide -->
-    <div class="card card-wide" id="about">
-      <div class="card-label">What I do</div>
-      <h2>I fix hard problems fast</h2>
-      <p>Whether you're stuck on growth, losing to competitors, or just need a clear plan — I'll cut through the noise and help you move.</p>
-      <div class="tags">
-        <span class="tag tag-purple">Growth Strategy</span>
-        <span class="tag tag-green">Market Entry</span>
-        <span class="tag tag-pink">Executive Coaching</span>
-        <span class="tag tag-gray">M&A Advisory</span>
-        <span class="tag tag-purple">Fundraising</span>
-        <span class="tag tag-gray">Org Design</span>
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-val">$2.4B</div>
+        <div class="stat-label">Shareholder value created</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">47</div>
+        <div class="stat-label">Engagements completed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">3.8×</div>
+        <div class="stat-label">Avg. EBITDA expansion</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">94%</div>
+        <div class="stat-label">Client retention rate</div>
       </div>
     </div>
+  </div>
 
-    <!-- Stat: years -->
-    <div class="card">
-      <div class="card-label">Experience</div>
-      <div class="stat-big">10<span>yr</span></div>
-      <p>ex-McKinsey, ex-Goldman. Now fully independent.</p>
-    </div>
-
-    <!-- Testimonial 1 -->
-    <div class="card card-wide">
-      <div class="card-label">Client love</div>
-      <p class="testi-text">"Alex spent 3 weeks with our team and saved us from a $4M mistake. Worth every penny — and then some."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">SK</div>
-        <div>
-          <div class="testi-name">Sarah Kim</div>
-          <div class="testi-role">CEO, Novu Health</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Testimonial 2 -->
-    <div class="card">
-      <div class="card-label">Client love</div>
-      <p class="testi-text" style="font-size:0.875rem">"Hired Alex to fix our go-to-market. Within 60 days, pipeline grew 3×."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">MR</div>
-        <div>
-          <div class="testi-name">Marcus Reid</div>
-          <div class="testi-role">Founder, Stackd</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- How it works -->
-    <div class="card card-wide">
-      <div class="card-label">How it works</div>
-      <h2>Simple. Fast. No BS.</h2>
-      <div class="process-list">
-        <div class="process-item">
-          <div class="process-num">1</div>
-          <div>
-            <div class="process-item-title">Free 30-min call</div>
-            <div class="process-item-sub">We talk about your situation. Zero pressure, full honesty.</div>
+  <!-- SERVICES -->
+  <div class="section-full" id="services">
+    <div class="section-inner">
+      <div class="label">Services</div>
+      <h2>Where I create the most <em>impact</em></h2>
+      <p class="section-sub">Engagements are selective. I work with a maximum of four clients at any given time to ensure full focus and exceptional outcomes.</p>
+      <div class="services-grid">
+        <div class="service">
+          <div class="service-num">01</div>
+          <h3>Corporate Strategy & Transformation</h3>
+          <p>Full-scale strategic repositioning for enterprises navigating mergers, market disruptions, or leadership transitions. From diagnosis to execution.</p>
+          <div class="service-tags">
+            <span class="stag">M&A</span>
+            <span class="stag">Restructuring</span>
+            <span class="stag">Turnaround</span>
           </div>
         </div>
-        <div class="process-item">
-          <div class="process-num">2</div>
-          <div>
-            <div class="process-item-title">Custom proposal</div>
-            <div class="process-item-sub">I send you a clear scope, timeline, and price. No surprises.</div>
+        <div class="service">
+          <div class="service-num">02</div>
+          <h3>Executive Leadership Advisory</h3>
+          <p>One-on-one advisory for C-suite leaders and board members. Sharpen your decision-making, governance approach, and organisational influence.</p>
+          <div class="service-tags">
+            <span class="stag">C-Suite</span>
+            <span class="stag">Board Advisory</span>
+            <span class="stag">Governance</span>
           </div>
         </div>
-        <div class="process-item">
-          <div class="process-num">3</div>
-          <div>
-            <div class="process-item-title">We get to work</div>
-            <div class="process-item-sub">Fast, focused, and collaborative. Results in weeks, not months.</div>
+        <div class="service">
+          <div class="service-num">03</div>
+          <h3>Growth & Market Entry</h3>
+          <p>Rigorous market intelligence and go-to-market playbooks for businesses expanding into new geographies, verticals, or business models.</p>
+          <div class="service-tags">
+            <span class="stag">Market Entry</span>
+            <span class="stag">Competitive Intel</span>
+            <span class="stag">Pricing</span>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Trusted by -->
-    <div class="card">
-      <div class="card-label">Trusted by teams from</div>
-      <div class="logos-row">
-        <span class="logo-pill">Google</span>
-        <span class="logo-pill">Stripe</span>
-        <span class="logo-pill">a16z</span>
-        <span class="logo-pill">Shopify</span>
-        <span class="logo-pill">Sequoia</span>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="card card-full cta-card" id="contact">
+  <!-- ABOUT -->
+  <div class="section" id="about">
+    <div class="two-col">
       <div>
-        <h2>Ready to figure this out?</h2>
-        <p>Spots are limited. Engagements from $5,000.</p>
+        <div class="label">About</div>
+        <h2>Twenty years at the<br>highest levels of <em>business</em></h2>
+        <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin-top:1.25rem">Before launching my independent practice, I was a Senior Partner at McKinsey & Company, leading the Financial Services and Private Equity practices across EMEA and North America.</p>
+        <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin-top:1rem">I've guided billion-dollar acquisitions, rescued mid-market firms from collapse, and helped founders build category-defining companies. My work is defined by one thing: results that compound.</p>
+        <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin-top:1rem">I don't do generic frameworks. I deliver custom, high-conviction strategy — implemented alongside your team.</p>
       </div>
-      <a href="mailto:hello@placeholder.com" class="btn-primary">Book a free call →</a>
+      <div>
+        <div class="label">Credentials</div>
+        <div class="cred-list">
+          <div class="cred">
+            <div class="cred-icon">🎓</div>
+            <div>
+              <div class="cred-title">MBA, Harvard Business School</div>
+              <div class="cred-sub">Baker Scholar — Top 5% of class</div>
+            </div>
+          </div>
+          <div class="cred">
+            <div class="cred-icon">🏛️</div>
+            <div>
+              <div class="cred-title">Senior Partner, McKinsey & Company</div>
+              <div class="cred-sub">Financial Services & PE Practice — 12 years</div>
+            </div>
+          </div>
+          <div class="cred">
+            <div class="cred-icon">📋</div>
+            <div>
+              <div class="cred-title">Board Member, 3 Public Companies</div>
+              <div class="cred-sub">Audit Committee Chair — FTSE 100 & S&P 500</div>
+            </div>
+          </div>
+          <div class="cred">
+            <div class="cred-icon">✍️</div>
+            <div>
+              <div class="cred-title">Author — "The Decisive Leader"</div>
+              <div class="cred-sub">WSJ Bestseller · 14 languages · 200K copies</div>
+            </div>
+          </div>
+          <div class="cred">
+            <div class="cred-icon">🎤</div>
+            <div>
+              <div class="cred-title">Keynote Speaker</div>
+              <div class="cred-sub">Davos, TED Global, Bloomberg New Economy Forum</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
+  <!-- TESTIMONIALS -->
+  <div class="section-full" id="results">
+    <div class="section-inner">
+      <div class="label">Client Testimonials</div>
+      <h2>What senior leaders <em>say</em></h2>
+      <div class="testi-grid">
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p class="testi-body">"James doesn't bring you a playbook — he brings you clarity. Within 90 days we had restructured our leadership team and identified €180M in untapped margin. The ROI was unlike anything we'd seen."</p>
+          <div class="testi-author">
+            <div class="tav">RK</div>
+            <div>
+              <div class="tname">Richard Köhler</div>
+              <div class="trole">CEO, Europacorp Group</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p class="testi-body">"Three strategy firms gave us the same diagnosis with no execution path. James walked in, asked three questions no one had asked, and we had a plan by Friday. Exceptional clarity under pressure."</p>
+          <div class="testi-author">
+            <div class="tav">SA</div>
+            <div>
+              <div class="tname">Samira Al-Rashid</div>
+              <div class="trole">Chairman, NovaBridge Capital</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p class="testi-body">"Retaining James was the best investment our board made last year. His ability to operate at the intersection of strategy, governance, and execution is genuinely rare. He doesn't just advise — he partners."</p>
+          <div class="testi-author">
+            <div class="tav">TM</div>
+            <div>
+              <div class="tname">Thomas Müller</div>
+              <div class="trole">Board Chair, Meridian Industrials AG</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="section" id="process">
+    <div class="label">Engagement Process</div>
+    <h2>How we work <em>together</em></h2>
+    <div class="process-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Discovery Call</h3>
+        <p>A confidential 60-minute session to assess your situation, constraints, and goals. No obligations — just honest dialogue.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Diagnostic</h3>
+        <p>Structured analysis and stakeholder interviews to identify root causes, not just surface symptoms.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Strategic Design</h3>
+        <p>A bespoke roadmap with prioritised initiatives, decision frameworks, and measurable milestones.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Advisory Retainer</h3>
+        <p>Ongoing access to ensure execution succeeds. Strategy without implementation is just theory.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section" id="contact">
+    <div class="cta-inner">
+      <div class="cta-label">Get in Touch</div>
+      <h2>Ready to make a <em>decisive</em> move?</h2>
+      <p class="cta-sub">Engagements begin at £25,000. I take on a maximum of four clients per quarter. If you're serious about transformation, let's talk.</p>
+      <a href="mailto:hello@placeholder.com" class="btn-white">Schedule a consultation →</a>
+      <p class="cta-note">All conversations are strictly confidential · Response within 24 hours</p>
+    </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 Alex Chen Consulting</p>
-    <div style="display:flex;gap:1.5rem">
-      <a href="#">LinkedIn</a>
-      <a href="#">Twitter</a>
-      <a href="mailto:hello@placeholder.com">Email</a>
-    </div>
+    <div class="footer-logo">J<span>.</span>Wellington</div>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#results">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 James Wellington Advisory. All rights reserved.</div>
   </footer>
 
 </body>

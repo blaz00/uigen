@@ -472,6 +472,156 @@
 
     .footer-copy { font-size: 0.78rem; color: var(--muted2); }
 
+    /* ── ANIMATIONS ── */
+
+    /* Scroll-reveal base state */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Stagger children */
+    .reveal-group > * {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal-group.visible > *:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0s; }
+    .reveal-group.visible > *:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.1s; }
+    .reveal-group.visible > *:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:0.2s; }
+    .reveal-group.visible > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:0.3s; }
+
+    /* Hero text lines stagger */
+    .hero-line {
+      display: block;
+      overflow: hidden;
+    }
+    .hero-line-inner {
+      display: block;
+      transform: translateY(110%);
+      opacity: 0;
+      transition: transform 0.85s cubic-bezier(0.22,1,0.36,1), opacity 0.5s ease;
+    }
+    .hero-line-inner.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Hero eyebrow fade */
+    .hero-eyebrow {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .hero-eyebrow.visible { opacity: 1; transform: translateY(0); }
+
+    /* Hero sub + buttons */
+    .hero-sub, .hero-btns {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .hero-sub.visible, .hero-btns.visible { opacity: 1; transform: translateY(0); }
+
+    /* Profile card float */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-10px); }
+    }
+    .profile-card {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Profile card reveal */
+    .profile-card-wrap {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s, transform 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s;
+    }
+    .profile-card-wrap.visible { opacity: 1; transform: translateX(0); }
+
+    /* Stat counter */
+    .stat-val {
+      transition: color 0.3s;
+    }
+
+    /* Service card hover line */
+    .service {
+      position: relative;
+    }
+    .service::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--blue);
+      transition: width 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    .service:hover::after { width: 100%; }
+
+    /* Step hover */
+    .step {
+      transition: background 0.25s;
+    }
+    .step:hover { background: var(--bg2); }
+    .step::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--blue);
+      transition: width 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    .step:hover::after { width: 100%; }
+
+    /* Nav scroll effect */
+    nav { transition: box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 1px 24px rgba(11,31,58,0.08); }
+
+    /* Hero dot-grid background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #dde5f0 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.45;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 80% 80% at 70% 50%, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 70% 50%, black 30%, transparent 80%);
+    }
+
+    /* CTA beam */
+    .cta-beam {
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 1px; height: 120px;
+      background: linear-gradient(to bottom, transparent, rgba(147,197,253,0.5), transparent);
+      animation: beam 3s ease-in-out infinite;
+    }
+
+    @keyframes beam {
+      0%, 100% { opacity: 0.4; height: 80px; }
+      50%       { opacity: 1;   height: 140px; }
+    }
+
+    /* Cred row reveal */
+    .cred {
+      opacity: 0;
+      transform: translateX(-16px);
+      transition: opacity 0.5s ease, transform 0.5s ease, background 0.2s;
+    }
+    .cred.visible { opacity: 1; transform: translateX(0); }
+
+    /* Testi card reveal */
+    .testi {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.2s, box-shadow 0.2s;
+    }
+    .testi.visible { opacity: 1; transform: translateY(0); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; padding-top: 8rem; }
@@ -507,14 +657,15 @@
   </nav>
 
   <!-- HERO -->
-  <div style="border-bottom:1px solid var(--border)">
+  <div style="border-bottom:1px solid var(--border);position:relative;overflow:hidden">
+    <div class="hero-bg"></div>
     <div class="hero">
       <div>
         <div class="hero-eyebrow">Senior Strategy Advisor · Independent Practice</div>
         <h1>
-          Strategic clarity<br>
-          for leaders who<br>
-          need to <em>move.</em>
+          <span class="hero-line"><span class="hero-line-inner">Strategic clarity</span></span>
+          <span class="hero-line"><span class="hero-line-inner">for leaders who</span></span>
+          <span class="hero-line"><span class="hero-line-inner">need to <em>move.</em></span></span>
         </h1>
         <p class="hero-sub">
           I advise boards, founders, and executive teams on the decisions that define their next decade.
@@ -525,7 +676,7 @@
           <a href="#services" class="btn-secondary">View services</a>
         </div>
       </div>
-      <div class="profile-card">
+      <div class="profile-card-wrap"><div class="profile-card">
         <div class="profile-img">
           <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -537,12 +688,12 @@
           <div class="profile-name">James Wellington</div>
           <div class="profile-title">Senior Strategy Advisor · Ex-McKinsey Partner</div>
         </div>
-      </div>
+      </div></div>
     </div>
   </div>
 
   <!-- LOGO BAR -->
-  <div class="logo-bar">
+  <div class="logo-bar reveal">
     <div class="logo-bar-label">Trusted by leaders from</div>
     <div class="logo-divider"></div>
     <div class="logo-names">
@@ -579,10 +730,10 @@
   <!-- SERVICES -->
   <div class="section-full" id="services">
     <div class="section-inner">
-      <div class="label">Services</div>
-      <h2>Where I create the most <em>impact</em></h2>
-      <p class="section-sub">Engagements are selective. I work with a maximum of four clients at any given time to ensure full focus and exceptional outcomes.</p>
-      <div class="services-grid">
+      <div class="label reveal">Services</div>
+      <h2 class="reveal">Where I create the most <em>impact</em></h2>
+      <p class="section-sub reveal">Engagements are selective. I work with a maximum of four clients at any given time to ensure full focus and exceptional outcomes.</p>
+      <div class="services-grid reveal-group">
         <div class="service">
           <div class="service-num">01</div>
           <h3>Corporate Strategy & Transformation</h3>
@@ -621,8 +772,8 @@
   <div class="section" id="about">
     <div class="two-col">
       <div>
-        <div class="label">About</div>
-        <h2>Twenty years at the<br>highest levels of <em>business</em></h2>
+        <div class="label reveal">About</div>
+        <h2 class="reveal">Twenty years at the<br>highest levels of <em>business</em></h2>
         <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin-top:1.25rem">Before launching my independent practice, I was a Senior Partner at McKinsey & Company, leading the Financial Services and Private Equity practices across EMEA and North America.</p>
         <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin-top:1rem">I've guided billion-dollar acquisitions, rescued mid-market firms from collapse, and helped founders build category-defining companies. My work is defined by one thing: results that compound.</p>
         <p style="font-size:0.95rem;color:var(--muted);line-height:1.8;margin-top:1rem">I don't do generic frameworks. I deliver custom, high-conviction strategy — implemented alongside your team.</p>
@@ -673,8 +824,8 @@
   <!-- TESTIMONIALS -->
   <div class="section-full" id="results">
     <div class="section-inner">
-      <div class="label">Client Testimonials</div>
-      <h2>What senior leaders <em>say</em></h2>
+      <div class="label reveal">Client Testimonials</div>
+      <h2 class="reveal">What senior leaders <em>say</em></h2>
       <div class="testi-grid">
         <div class="testi">
           <div class="stars">★★★★★</div>
@@ -715,9 +866,9 @@
 
   <!-- PROCESS -->
   <div class="section" id="process">
-    <div class="label">Engagement Process</div>
-    <h2>How we work <em>together</em></h2>
-    <div class="process-grid">
+    <div class="label reveal">Engagement Process</div>
+    <h2 class="reveal">How we work <em>together</em></h2>
+    <div class="process-grid reveal-group">
       <div class="step">
         <div class="step-num">01</div>
         <h3>Discovery Call</h3>
@@ -742,8 +893,9 @@
   </div>
 
   <!-- CTA -->
-  <div class="cta-section" id="contact">
-    <div class="cta-inner">
+  <div class="cta-section" id="contact" style="position:relative;overflow:hidden">
+    <div class="cta-beam"></div>
+    <div class="cta-inner reveal">
       <div class="cta-label">Get in Touch</div>
       <h2>Ready to make a <em>decisive</em> move?</h2>
       <p class="cta-sub">Engagements begin at £25,000. I take on a maximum of four clients per quarter. If you're serious about transformation, let's talk.</p>
@@ -764,5 +916,94 @@
     <div class="footer-copy">© 2026 James Wellington Advisory. All rights reserved.</div>
   </footer>
 
+  <script>
+    // ── NAV SCROLL SHADOW ──
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ── HERO ANIMATIONS ──
+    window.addEventListener('load', () => {
+      // Eyebrow
+      setTimeout(() => document.querySelector('.hero-eyebrow').classList.add('visible'), 100);
+      // H1 lines stagger
+      document.querySelectorAll('.hero-line-inner').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), 200 + i * 120);
+      });
+      // Sub + buttons
+      setTimeout(() => document.querySelector('.hero-sub').classList.add('visible'), 620);
+      setTimeout(() => document.querySelector('.hero-btns').classList.add('visible'), 750);
+      // Profile card
+      setTimeout(() => document.querySelector('.profile-card-wrap').classList.add('visible'), 400);
+    });
+
+    // ── SCROLL REVEAL ──
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .reveal-group').forEach(el => revealObserver.observe(el));
+
+    // Credentials stagger
+    const credObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.cred').forEach((cred, i) => {
+            setTimeout(() => cred.classList.add('visible'), i * 90);
+          });
+          credObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.cred-list').forEach(el => credObserver.observe(el));
+
+    // Testimonials stagger
+    const testiObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.testi').forEach((t, i) => {
+            setTimeout(() => t.classList.add('visible'), i * 120);
+          });
+          testiObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.testi-grid').forEach(el => testiObserver.observe(el));
+
+    // ── STAT COUNTER ──
+    function animateCount(el, target, prefix, suffix, duration) {
+      const start = performance.now();
+      const isDecimal = target % 1 !== 0;
+      const update = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const val = isDecimal ? (target * ease).toFixed(1) : Math.floor(target * ease);
+        el.textContent = prefix + val + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = prefix + target + suffix;
+      };
+      requestAnimationFrame(update);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCount(document.querySelectorAll('.stat-val')[0], 2.4, '$', 'B', 1400);
+          animateCount(document.querySelectorAll('.stat-val')[1], 47, '', '', 1200);
+          animateCount(document.querySelectorAll('.stat-val')[2], 3.8, '', '×', 1300);
+          animateCount(document.querySelectorAll('.stat-val')[3], 94, '', '%', 1200);
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    statsObserver.observe(document.querySelector('.stats-bar'));
+  </script>
 </body>
 </html>

@@ -15,12 +15,17 @@ import { PreviewFrame } from "@/components/preview/PreviewFrame";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HeaderActions } from "@/components/HeaderActions";
 
-export function MainContent() {
+interface MainContentProps {
+  user?: { id: string; email: string } | null
+  project?: { id: string; name: string; messages: any[]; data: any; createdAt: Date; updatedAt: Date }
+}
+
+export function MainContent({ user, project }: MainContentProps = {}) {
   const [activeView, setActiveView] = useState<"preview" | "code">("preview");
 
   return (
-    <FileSystemProvider>
-      <ChatProvider>
+    <FileSystemProvider initialData={project?.data}>
+      <ChatProvider projectId={project?.id} initialMessages={project?.messages}>
         <div className="h-screen w-screen overflow-hidden bg-neutral-50">
           <ResizablePanelGroup direction="horizontal" className="h-full">
             {/* Left Panel - Chat */}
@@ -56,7 +61,7 @@ export function MainContent() {
                       <TabsTrigger value="code" className="data-[state=active]:bg-white data-[state=active]:text-neutral-900 data-[state=active]:shadow-sm text-neutral-600 px-4 py-1.5 text-sm font-medium transition-all">Code</TabsTrigger>
                     </TabsList>
                   </Tabs>
-                  <HeaderActions />
+                  <HeaderActions user={user} projectId={project?.id} />
                 </div>
 
                 {/* Content Area */}

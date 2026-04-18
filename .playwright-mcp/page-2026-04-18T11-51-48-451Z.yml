@@ -1,0 +1,545 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fblaz00%2Fuigen
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=blaz00%2Fuigen
+            - button "Appearance settings" [disabled] [ref=e58]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "blaz00" [ref=e70] [cursor=pointer]:
+            - /url: /blaz00
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "uigen" [ref=e73] [cursor=pointer]:
+              - /url: /blaz00/uigen
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fblaz00%2Fuigen
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 0" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fblaz00%2Fuigen
+                - img [ref=e82]
+                - text: Fork
+                - generic "0" [ref=e84]
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fblaz00%2Fuigen
+                - img [ref=e88]
+                - text: Star
+                - generic "0 users starred this repository" [ref=e90]: "0"
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /blaz00/uigen
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues" [ref=e99] [cursor=pointer]:
+              - /url: /blaz00/uigen/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+          - listitem [ref=e104]:
+            - link "Pull requests" [ref=e105] [cursor=pointer]:
+              - /url: /blaz00/uigen/pulls
+              - img [ref=e106]
+              - generic [ref=e108]: Pull requests
+          - listitem [ref=e109]:
+            - link "Actions" [ref=e110] [cursor=pointer]:
+              - /url: /blaz00/uigen/actions
+              - img [ref=e111]
+              - generic [ref=e113]: Actions
+          - listitem [ref=e114]:
+            - link "Projects" [ref=e115] [cursor=pointer]:
+              - /url: /blaz00/uigen/projects
+              - img [ref=e116]
+              - generic [ref=e118]: Projects
+          - listitem [ref=e119]:
+            - link "Security and quality" [ref=e120] [cursor=pointer]:
+              - /url: /blaz00/uigen/security
+              - img [ref=e121]
+              - generic [ref=e123]: Security and quality
+          - listitem [ref=e124]:
+            - link "Insights" [ref=e125] [cursor=pointer]:
+              - /url: /blaz00/uigen/pulse
+              - img [ref=e126]
+              - generic [ref=e128]: Insights
+    - generic [ref=e141]:
+      - heading "blaz00/uigen" [level=1] [ref=e143]
+      - generic [ref=e144]:
+        - generic [ref=e147]:
+          - generic [ref=e148]:
+            - generic [ref=e149]:
+              - button "main branch" [ref=e151] [cursor=pointer]:
+                - generic [ref=e152]:
+                  - generic [ref=e154]:
+                    - img [ref=e156]
+                    - generic [ref=e159]: main
+                  - generic:
+                    - img
+              - generic [ref=e160]:
+                - link "Branches" [ref=e161] [cursor=pointer]:
+                  - /url: /blaz00/uigen/branches
+                  - generic [ref=e162]:
+                    - generic:
+                      - img
+                    - generic [ref=e163]: Branches
+                - link "Tags" [ref=e164] [cursor=pointer]:
+                  - /url: /blaz00/uigen/tags
+                  - generic [ref=e165]:
+                    - generic:
+                      - img
+                    - generic [ref=e166]: Tags
+            - generic [ref=e167]:
+              - generic [ref=e171]:
+                - img [ref=e173]
+                - combobox "Go to file" [ref=e175]
+              - button "Code" [ref=e176] [cursor=pointer]:
+                - generic [ref=e177]:
+                  - generic:
+                    - img
+                  - generic [ref=e178]: Code
+                  - generic:
+                    - img
+          - generic [ref=e179]:
+            - generic [ref=e180]:
+              - heading "Folders and files" [level=2] [ref=e181]
+              - table "Folders and files" [ref=e182]:
+                - rowgroup:
+                  - row "Name Last commit message Last commit date":
+                    - columnheader "Name"
+                    - columnheader "Last commit message":
+                      - generic "Last commit message"
+                    - columnheader "Last commit date":
+                      - generic "Last commit date"
+                - rowgroup [ref=e183]:
+                  - row "Latest commit History 6 Commits" [ref=e184]:
+                    - cell "Latest commit History 6 Commits" [ref=e185]:
+                      - generic [ref=e186]:
+                        - heading "Latest commit" [level=2] [ref=e187]
+                        - generic [ref=e190]:
+                          - heading "History" [level=2] [ref=e191]
+                          - link "6 Commits" [ref=e192] [cursor=pointer]:
+                            - /url: /blaz00/uigen/commits/main/
+                            - generic [ref=e193]:
+                              - generic:
+                                - img
+                              - generic [ref=e194]: 6 Commits
+                  - row ".claude, (Directory)" [ref=e195]:
+                    - cell ".claude, (Directory)" [ref=e196]:
+                      - generic [ref=e197]:
+                        - img [ref=e198]
+                        - link ".claude, (Directory)" [ref=e203] [cursor=pointer]:
+                          - /url: /blaz00/uigen/tree/main/.claude
+                          - text: .claude
+                    - cell [ref=e204]
+                    - cell [ref=e206]
+                  - row ".github/workflows, (Directory)" [ref=e209]:
+                    - cell ".github/workflows, (Directory)" [ref=e210]:
+                      - generic [ref=e211]:
+                        - img [ref=e212]
+                        - link ".github/workflows, (Directory)" [ref=e217] [cursor=pointer]:
+                          - /url: /blaz00/uigen/tree/main/.github/workflows
+                          - text: .github/workflows
+                    - cell [ref=e218]
+                    - cell [ref=e220]
+                  - row ".playwright-mcp, (Directory)" [ref=e223]:
+                    - cell ".playwright-mcp, (Directory)" [ref=e224]:
+                      - generic [ref=e225]:
+                        - img [ref=e226]
+                        - link ".playwright-mcp, (Directory)" [ref=e231] [cursor=pointer]:
+                          - /url: /blaz00/uigen/tree/main/.playwright-mcp
+                          - text: .playwright-mcp
+                    - cell [ref=e232]
+                    - cell [ref=e234]
+                  - row "prisma, (Directory)" [ref=e237]:
+                    - cell "prisma, (Directory)" [ref=e238]:
+                      - generic [ref=e239]:
+                        - img [ref=e240]
+                        - link "prisma, (Directory)" [ref=e245] [cursor=pointer]:
+                          - /url: /blaz00/uigen/tree/main/prisma
+                          - text: prisma
+                    - cell [ref=e246]
+                    - cell [ref=e248]
+                  - row "src, (Directory)" [ref=e251]:
+                    - cell "src, (Directory)" [ref=e252]:
+                      - generic [ref=e253]:
+                        - img [ref=e254]
+                        - link "src, (Directory)" [ref=e259] [cursor=pointer]:
+                          - /url: /blaz00/uigen/tree/main/src
+                          - text: src
+                    - cell [ref=e260]
+                    - cell [ref=e262]
+                  - row ".eslintrc.json, (File)" [ref=e265]:
+                    - cell ".eslintrc.json, (File)" [ref=e266]:
+                      - generic [ref=e267]:
+                        - img [ref=e268]
+                        - link ".eslintrc.json, (File)" [ref=e273] [cursor=pointer]:
+                          - /url: /blaz00/uigen/blob/main/.eslintrc.json
+                          - text: .eslintrc.json
+                    - cell [ref=e274]
+                    - cell [ref=e276]
+                  - row ".gitignore, (File)" [ref=e279]:
+                    - cell ".gitignore, (File)" [ref=e280]:
+                      - generic [ref=e281]:
+                        - img [ref=e282]
+                        - link ".gitignore, (File)" [ref=e287] [cursor=pointer]:
+                          - /url: /blaz00/uigen/blob/main/.gitignore
+                          - text: .gitignore
+                    - cell [ref=e288]
+                    - cell [ref=e290]
+                  - row "CLAUDE.md, (File)" [ref=e293]:
+                    - cell "CLAUDE.md, (File)" [ref=e294]:
+                      - generic [ref=e295]:
+                        - img [ref=e296]
+                        - link "CLAUDE.md, (File)" [ref=e301] [cursor=pointer]:
+                          - /url: /blaz00/uigen/blob/main/CLAUDE.md
+                          - text: CLAUDE.md
+                    - cell [ref=e302]
+                    - cell [ref=e304]
+                  - row "README.md, (File)" [ref=e307]:
+                    - cell "README.md, (File)" [ref=e308]:
+                      - generic [ref=e309]:
+                        - img [ref=e310]
+                        - link "README.md, (File)" [ref=e315] [cursor=pointer]:
+                          - /url: /blaz00/uigen/blob/main/README.md
+                          - text: README.md
+                    - cell [ref=e316]
+                    - cell [ref=e318]
+                  - row "components.json, (File)" [ref=e321]:
+                    - cell "components.json, (File)" [ref=e322]:
+                      - generic [ref=e323]:
+                        - img [ref=e324]
+                        - link "components.json, (File)" [ref=e329] [cursor=pointer]:
+                          - /url: /blaz00/uigen/blob/main/components.json
+                          - text: components.json
+                    - cell [ref=e330]
+                    - cell [ref=e332]
+                  - row "next.config.ts, (File)" [ref=e335]:
+                    - cell "next.config.ts, (File)" [ref=e336]:
+                      - generic [ref=e337]:
+                        - img [ref=e338]
+                        - link "next.config.ts, (File)" [ref=e343] [cursor=pointer]:
+                          - /url: /blaz00/uigen/blob/main/next.config.ts
+                          - text: next.config.ts
+                    - cell [ref=e344]
+                    - cell [ref=e346]
+                  - row "node-compat.cjs, (File)" [ref=e349]:
+                    - cell "node-compat.cjs, (File)" [ref=e350]:
+                      - generic [ref=e351]:
+                        - img [ref=e352]
+                        - link "node-compat.cjs, (File)" [ref=e357] [cursor=pointer]:
+                          - /url: /blaz00/uigen/blob/main/node-compat.cjs
+                          - text: node-compat.cjs
+                    - cell [ref=e358]
+                    - cell [ref=e360]
+                  - row "package-lock.json, (File)" [ref=e363]:
+                    - cell "package-lock.json, (File)" [ref=e364]:
+                      - generic [ref=e365]:
+                        - img [ref=e366]
+                        - link "package-lock.json, (File)" [ref=e371] [cursor=pointer]:
+                          - /url: /blaz00/uigen/blob/main/package-lock.json
+                          - text: package-lock.json
+                    - cell [ref=e372]
+                    - cell [ref=e374]
+                  - row "package.json, (File)" [ref=e377]:
+                    - cell "package.json, (File)" [ref=e378]:
+                      - generic [ref=e379]:
+                        - img [ref=e380]
+                        - link "package.json, (File)" [ref=e385] [cursor=pointer]:
+                          - /url: /blaz00/uigen/blob/main/package.json
+                          - text: package.json
+                    - cell [ref=e386]
+                    - cell [ref=e388]
+                  - row "postcss.config.mjs, (File)" [ref=e391]:
+                    - cell "postcss.config.mjs, (File)" [ref=e392]:
+                      - generic [ref=e393]:
+                        - img [ref=e394]
+                        - link "postcss.config.mjs, (File)" [ref=e399] [cursor=pointer]:
+                          - /url: /blaz00/uigen/blob/main/postcss.config.mjs
+                          - text: postcss.config.mjs
+                    - cell [ref=e400]
+                    - cell [ref=e402]
+                  - row "tsconfig.json, (File)" [ref=e405]:
+                    - cell "tsconfig.json, (File)" [ref=e406]:
+                      - generic [ref=e407]:
+                        - img [ref=e408]
+                        - link "tsconfig.json, (File)" [ref=e413] [cursor=pointer]:
+                          - /url: /blaz00/uigen/blob/main/tsconfig.json
+                          - text: tsconfig.json
+                    - cell [ref=e414]
+                    - cell [ref=e416]
+                  - row "vitest.config.mts, (File)" [ref=e419]:
+                    - cell "vitest.config.mts, (File)" [ref=e420]:
+                      - generic [ref=e421]:
+                        - img [ref=e422]
+                        - link "vitest.config.mts, (File)" [ref=e427] [cursor=pointer]:
+                          - /url: /blaz00/uigen/blob/main/vitest.config.mts
+                          - text: vitest.config.mts
+                    - cell [ref=e428]
+                    - cell [ref=e430]
+            - generic [ref=e434]:
+              - generic [ref=e435]:
+                - heading "Repository files navigation" [level=2] [ref=e436]
+                - navigation "Repository files" [ref=e437]:
+                  - list [ref=e438]:
+                    - listitem [ref=e439]:
+                      - link "README" [ref=e440] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e442]
+                        - generic [ref=e444]: README
+                - button "Outline" [ref=e445] [cursor=pointer]:
+                  - img [ref=e446]
+              - article [ref=e449]:
+                - generic [ref=e450]:
+                  - heading "UIGen" [level=1] [ref=e451]
+                  - 'link "Permalink: UIGen" [ref=e452] [cursor=pointer]':
+                    - /url: "#uigen"
+                    - img [ref=e453]
+                - paragraph [ref=e455]: AI-powered React component generator with live preview.
+                - generic [ref=e456]:
+                  - heading "Prerequisites" [level=2] [ref=e457]
+                  - 'link "Permalink: Prerequisites" [ref=e458] [cursor=pointer]':
+                    - /url: "#prerequisites"
+                    - img [ref=e459]
+                - list [ref=e461]:
+                  - listitem [ref=e462]: Node.js 18+
+                  - listitem [ref=e463]: npm
+                - generic [ref=e464]:
+                  - heading "Setup" [level=2] [ref=e465]
+                  - 'link "Permalink: Setup" [ref=e466] [cursor=pointer]':
+                    - /url: "#setup"
+                    - img [ref=e467]
+                - list [ref=e469]:
+                  - listitem [ref=e470]:
+                    - strong [ref=e471]: Optional
+                    - text: Edit
+                    - code [ref=e472]: .env
+                    - text: "and add your Anthropic API key:"
+                - generic [ref=e473]:
+                  - code [ref=e475]: ANTHROPIC_API_KEY=your-api-key-here
+                  - button "Copy" [ref=e477] [cursor=pointer]:
+                    - img [ref=e478]
+                - paragraph [ref=e481]: The project will run without an API key. Rather than using a LLM to generate components, static code will be returned instead.
+                - list [ref=e482]:
+                  - listitem [ref=e483]: Install dependencies and initialize database
+                - generic [ref=e484]:
+                  - generic [ref=e485]: npm run setup
+                  - button "Copy" [ref=e487] [cursor=pointer]:
+                    - img [ref=e488]
+                - paragraph [ref=e491]: "This command will:"
+                - list [ref=e492]:
+                  - listitem [ref=e493]: Install all dependencies
+                  - listitem [ref=e494]: Generate Prisma client
+                  - listitem [ref=e495]: Run database migrations
+                - generic [ref=e496]:
+                  - heading "Running the Application" [level=2] [ref=e497]
+                  - 'link "Permalink: Running the Application" [ref=e498] [cursor=pointer]':
+                    - /url: "#running-the-application"
+                    - img [ref=e499]
+                - generic [ref=e501]:
+                  - heading "Development" [level=3] [ref=e502]
+                  - 'link "Permalink: Development" [ref=e503] [cursor=pointer]':
+                    - /url: "#development"
+                    - img [ref=e504]
+                - generic [ref=e506]:
+                  - generic [ref=e507]: npm run dev
+                  - button "Copy" [ref=e509] [cursor=pointer]:
+                    - img [ref=e510]
+                - paragraph [ref=e513]:
+                  - text: Open
+                  - link "http://localhost:3000" [ref=e514] [cursor=pointer]:
+                    - /url: http://localhost:3000
+                - generic [ref=e515]:
+                  - heading "Usage" [level=2] [ref=e516]
+                  - 'link "Permalink: Usage" [ref=e517] [cursor=pointer]':
+                    - /url: "#usage"
+                    - img [ref=e518]
+                - list [ref=e520]:
+                  - listitem [ref=e521]: Sign up or continue as anonymous user
+                  - listitem [ref=e522]: Describe the React component you want to create in the chat
+                  - listitem [ref=e523]: View generated components in real-time preview
+                  - listitem [ref=e524]: Switch to Code view to see and edit the generated files
+                  - listitem [ref=e525]: Continue iterating with the AI to refine your components
+                - generic [ref=e526]:
+                  - heading "Features" [level=2] [ref=e527]
+                  - 'link "Permalink: Features" [ref=e528] [cursor=pointer]':
+                    - /url: "#features"
+                    - img [ref=e529]
+                - list [ref=e531]:
+                  - listitem [ref=e532]: AI-powered component generation using Claude
+                  - listitem [ref=e533]: Live preview with hot reload
+                  - listitem [ref=e534]: Virtual file system (no files written to disk)
+                  - listitem [ref=e535]: Syntax highlighting and code editor
+                  - listitem [ref=e536]: Component persistence for registered users
+                  - listitem [ref=e537]: Export generated code
+                - generic [ref=e538]:
+                  - heading "Tech Stack" [level=2] [ref=e539]
+                  - 'link "Permalink: Tech Stack" [ref=e540] [cursor=pointer]':
+                    - /url: "#tech-stack"
+                    - img [ref=e541]
+                - list [ref=e543]:
+                  - listitem [ref=e544]: Next.js 15 with App Router
+                  - listitem [ref=e545]: React 19
+                  - listitem [ref=e546]: TypeScript
+                  - listitem [ref=e547]: Tailwind CSS v4
+                  - listitem [ref=e548]: Prisma with SQLite
+                  - listitem [ref=e549]: Anthropic Claude AI
+                  - listitem [ref=e550]: Vercel AI SDK
+        - generic [ref=e554]:
+          - generic [ref=e557]:
+            - heading "About" [level=2] [ref=e558]
+            - generic [ref=e559]: No description, website, or topics provided.
+            - heading "Resources" [level=3] [ref=e560]
+            - link "Readme" [ref=e562] [cursor=pointer]:
+              - /url: "#readme-ov-file"
+              - img [ref=e563]
+              - text: Readme
+            - link "Activity" [ref=e566] [cursor=pointer]:
+              - /url: /blaz00/uigen/activity
+              - img [ref=e567]
+              - text: Activity
+            - heading "Stars" [level=3] [ref=e569]
+            - link "0 stars" [ref=e571] [cursor=pointer]:
+              - /url: /blaz00/uigen/stargazers
+              - img [ref=e572]
+              - strong [ref=e574]: "0"
+              - text: stars
+            - heading "Watchers" [level=3] [ref=e575]
+            - link "0 watching" [ref=e577] [cursor=pointer]:
+              - /url: /blaz00/uigen/watchers
+              - img [ref=e578]
+              - strong [ref=e580]: "0"
+              - text: watching
+            - heading "Forks" [level=3] [ref=e581]
+            - link "0 forks" [ref=e583] [cursor=pointer]:
+              - /url: /blaz00/uigen/forks
+              - img [ref=e584]
+              - strong [ref=e586]: "0"
+              - text: forks
+            - link "Report repository" [ref=e588] [cursor=pointer]:
+              - /url: /contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Fblaz00%2Fuigen&report=blaz00+%28user%29
+          - generic [ref=e590]:
+            - heading "Releases" [level=2] [ref=e591]:
+              - link "Releases" [ref=e592] [cursor=pointer]:
+                - /url: /blaz00/uigen/releases
+            - generic [ref=e593]: No releases published
+          - generic "Loading latest packages" [ref=e596]:
+            - heading "Packages" [level=2] [ref=e597]:
+              - link "Packages" [ref=e598] [cursor=pointer]:
+                - /url: /users/blaz00/packages?repo_name=uigen
+          - generic "Loading contributors" [ref=e610]:
+            - generic:
+              - heading "Contributors" [level=2] [ref=e611]:
+                - link "Contributors" [ref=e612] [cursor=pointer]:
+                  - /url: /blaz00/uigen/graphs/contributors
+              - list [ref=e613]:
+                - listitem [ref=e614]
+                - listitem [ref=e616]
+                - listitem [ref=e618]
+          - generic [ref=e621]:
+            - heading "Languages" [level=2] [ref=e622]
+            - list [ref=e628]:
+              - listitem [ref=e629]:
+                - link "TypeScript 98.0%" [ref=e630] [cursor=pointer]:
+                  - /url: /blaz00/uigen/search?l=typescript
+                  - img [ref=e631]
+                  - generic [ref=e633]: TypeScript
+                  - generic [ref=e634]: 98.0%
+              - listitem [ref=e635]:
+                - link "CSS 1.7%" [ref=e636] [cursor=pointer]:
+                  - /url: /blaz00/uigen/search?l=css
+                  - img [ref=e637]
+                  - generic [ref=e639]: CSS
+                  - generic [ref=e640]: 1.7%
+              - listitem [ref=e641]:
+                - link "JavaScript 0.3%" [ref=e642] [cursor=pointer]:
+                  - /url: /blaz00/uigen/search?l=javascript
+                  - img [ref=e643]
+                  - generic [ref=e645]: JavaScript
+                  - generic [ref=e646]: 0.3%
+  - contentinfo [ref=e648]:
+    - heading "Footer" [level=2] [ref=e649]
+    - generic [ref=e650]:
+      - generic [ref=e651]:
+        - link "GitHub Homepage" [ref=e652] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e653]
+        - generic [ref=e655]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e656]:
+        - heading "Footer navigation" [level=3] [ref=e657]
+        - list "Footer navigation" [ref=e658]:
+          - listitem [ref=e659]:
+            - link "Terms" [ref=e660] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e661]:
+            - link "Privacy" [ref=e662] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e663]:
+            - link "Security" [ref=e664] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e665]:
+            - link "Status" [ref=e666] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e667]:
+            - link "Community" [ref=e668] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e669]:
+            - link "Docs" [ref=e670] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e671]:
+            - link "Contact" [ref=e672] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e673]:
+            - button "Manage cookies" [ref=e675] [cursor=pointer]
+          - listitem [ref=e676]:
+            - button "Do not share my personal information" [ref=e678] [cursor=pointer]

@@ -1,6 +1,6 @@
 "use client";
 
-import { Message } from "ai";
+import type { UIMessage as Message } from "ai";
 import { cn } from "@/lib/utils";
 import { User, Bot, Loader2 } from "lucide-react";
 import { MarkdownRenderer } from "./MarkdownRenderer";
@@ -29,7 +29,7 @@ export function MessageList({ messages, isLoading }: MessageListProps) {
       <div className="space-y-6 max-w-4xl mx-auto w-full">
         {messages.map((message) => (
           <div
-            key={message.id || message.content}
+            key={message.id}
             className={cn(
               "flex gap-4",
               message.role === "user" ? "justify-end" : "justify-start"
@@ -72,15 +72,16 @@ export function MessageList({ messages, isLoading }: MessageListProps) {
                             return (
                               <div key={partIndex} className="mt-3 p-3 bg-white/50 rounded-md border border-neutral-200">
                                 <span className="text-xs font-medium text-neutral-600 block mb-1">Reasoning</span>
-                                <span className="text-sm text-neutral-700">{part.reasoning}</span>
+                                <span className="text-sm text-neutral-700">{(part as any).reasoning ?? (part as any).text}</span>
                               </div>
                             );
                           case "tool-invocation":
-                            return <ToolCallBadge key={partIndex} toolInvocation={part.toolInvocation} />;
-                          case "source":
+                            return <ToolCallBadge key={partIndex} toolInvocation={(part as any).toolInvocation ?? part} />;
+                          case "source-url":
+                          case "source-document":
                             return (
                               <div key={partIndex} className="mt-2 text-xs text-neutral-500">
-                                Source: {JSON.stringify(part.source)}
+                                Source: {JSON.stringify((part as any).url ?? (part as any).source)}
                               </div>
                             );
                           case "step-start":
@@ -98,11 +99,11 @@ export function MessageList({ messages, isLoading }: MessageListProps) {
                           </div>
                         )}
                     </>
-                  ) : message.content ? (
+                  ) : (message as any).content ? (
                     message.role === "user" ? (
-                      <span className="whitespace-pre-wrap">{message.content}</span>
+                      <span className="whitespace-pre-wrap">{(message as any).content}</span>
                     ) : (
-                      <MarkdownRenderer content={message.content} className="prose-sm" />
+                      <MarkdownRenderer content={(message as any).content} className="prose-sm" />
                     )
                   ) : isLoading &&
                     message.role === "assistant" &&

@@ -1,7 +1,7 @@
 import { test, expect, vi, afterEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import { MessageList } from "../MessageList";
-import type { Message } from "ai";
+import type { UIMessage as Message } from "ai";
 
 // Mock the MarkdownRenderer component
 vi.mock("../MarkdownRenderer", () => ({

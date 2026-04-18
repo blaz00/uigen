@@ -1,32 +1,26 @@
-"use server";
+'use server'
 
-import { getSession } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+import { createClient } from '@/lib/supabase/server'
 
 export async function getProject(projectId: string) {
-  const session = await getSession();
-  
-  if (!session) {
-    throw new Error("Unauthorized");
-  }
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) throw new Error('Unauthorized')
 
-  const project = await prisma.project.findUnique({
-    where: {
-      id: projectId,
-      userId: session.userId,
-    },
-  });
+  const { data, error } = await supabase
+    .from('projects')
+    .select('*')
+    .eq('id', projectId)
+    .eq('user_id', user.id)
+    .single()
 
-  if (!project) {
-    throw new Error("Project not found");
-  }
-
+  if (error) throw new Error('Project not found')
   return {
-    id: project.id,
-    name: project.name,
-    messages: JSON.parse(project.messages),
-    data: JSON.parse(project.data),
-    createdAt: project.createdAt,
-    updatedAt: project.updatedAt,
-  };
+    id: data.id,
+    name: data.name,
+    messages: data.messages ?? [],
+    data: data.data ?? {},
+    createdAt: new Date(data.created_at),
+    updatedAt: new Date(data.updated_at),
+  }
 }

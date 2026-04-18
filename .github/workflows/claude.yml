@@ -30,10 +30,10 @@ jobs:
         with:
           fetch-depth: 1
 
-          - name: Project Setup
-            run: |
-              npm run setup
-              npm run dev:daemon
+      - name: Project Setup
+        run: |
+          npm run setup
+          npm run dev:daemon
 
       - name: Run Claude Code
         id: claude
@@ -53,14 +53,14 @@ jobs:
           # or https://code.claude.com/docs/en/cli-reference for available options
           # claude_args: '--allowed-tools Bash(gh pr:*)'
 
-custom_instructions: |
-  The project is already set up with all dependencies installed.
-  The server is already running at localhost:3000. Logs from it
-  are being written to logs.txt. If needed, you can query the
-  db with the 'sqlite3' cli. If needed, use the mcp__playwright
-  set of tools to launch a browser and interact with the app.
+          custom_instructions: |
+            The project is already set up with all dependencies installed.
+            The server is already running at localhost:3000. Logs from it
+            are being written to logs.txt. If needed, you can query the
+            db with the 'sqlite3' cli. If needed, use the mcp__playwright
+            set of tools to launch a browser and interact with the app.
 
-  mcp_config: |
+mcp_config: |
   {
     "mcpServers": {
       "playwright": {
@@ -74,6 +74,7 @@ custom_instructions: |
     }
   }
 
-allowed_tools: "Bash(npm:*),Bash(sqlite3:*),mcp__playwright__browser_snapshot,mcp__playwright__browser_click,..."
+
+  allowed_tools: "Bash(npm:*),Bash(sqlite3:*),mcp__playwright__browser_snapshot,mcp__playwright__browser_click,..."
 
 

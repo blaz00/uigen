@@ -55,4 +55,4 @@ SQLite via Prisma. `Project.messages` and `Project.data` are JSON stored as stri
 ### Key contexts
 
 - `FileSystemContext` — owns the client-side VFS, exposes `handleToolCall` which the chat stream calls on each tool invocation
-- `ChatContext` — wraps Vercel AI SDK's `useChat`, manages project ID and anonymous work tracking (`src/lib/anon-work-tracker.ts`)
+- `ChatContext` — wraps Vercel AI SDK's `useChat`, manages project ID and anonymous work tracking (`src/lib/anon-work-tracker.ts` uses `sessionStorage` to preserve anonymous work across login flows)

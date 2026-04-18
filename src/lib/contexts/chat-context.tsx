@@ -5,9 +5,12 @@ import {
   useContext,
   ReactNode,
   useEffect,
+  useState,
+  useRef,
 } from "react";
 import { useChat as useAIChat } from "@ai-sdk/react";
-import { Message } from "ai";
+import { DefaultChatTransport } from "ai";
+import type { UIMessage as Message } from "ai";
 import { useFileSystem } from "./file-system-context";
 import { setHasAnonWork } from "@/lib/anon-work-tracker";
 
@@ -19,8 +22,8 @@ interface ChatContextProps {
 interface ChatContextType {
   messages: Message[];
   input: string;
-  handleInputChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  setInput: (value: string) => void;
+  sendMessage: (text: string) => void;
   status: string;
 }
 
@@ -32,22 +35,25 @@ export function ChatProvider({
   initialMessages = [],
 }: ChatContextProps & { children: ReactNode }) {
   const { fileSystem, handleToolCall } = useFileSystem();
+  const [input, setInput] = useState("");
 
-  const {
-    messages,
-    input,
-    handleInputChange,
-    handleSubmit,
-    status,
-  } = useAIChat({
-    api: "/api/chat",
-    initialMessages,
-    body: {
-      files: fileSystem.serialize(),
-      projectId,
-    },
+  // Use a ref so the body function always returns the latest filesystem state
+  const fileSystemRef = useRef(fileSystem);
+  const projectIdRef = useRef(projectId);
+  useEffect(() => { fileSystemRef.current = fileSystem; }, [fileSystem]);
+  useEffect(() => { projectIdRef.current = projectId; }, [projectId]);
+
+  const { messages, sendMessage: aiSendMessage, status } = useAIChat({
+    messages: initialMessages,
+    transport: new DefaultChatTransport({
+      api: "/api/chat",
+      body: () => ({
+        files: fileSystemRef.current.serialize(),
+        projectId: projectIdRef.current,
+      }),
+    }),
     onToolCall: ({ toolCall }) => {
-      handleToolCall(toolCall);
+      handleToolCall(toolCall as any);
     },
   });
 
@@ -58,13 +64,19 @@ export function ChatProvider({
     }
   }, [messages, fileSystem, projectId]);
 
+  const sendMessage = (text: string) => {
+    if (!text.trim()) return;
+    aiSendMessage({ text });
+    setInput("");
+  };
+
   return (
     <ChatContext.Provider
       value={{
         messages,
         input,
-        handleInputChange,
-        handleSubmit,
+        setInput,
+        sendMessage,
         status,
       }}
     >

@@ -1,0 +1,36 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - heading "React Component Generator" [level=1] [ref=e7]
+      - generic [ref=e9]:
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - generic [ref=e54]: Create a beautiful Hello World website with a large greeting, colorful gradient background, and a welcome message
+            - img [ref=e57]
+          - generic [ref=e60]:
+            - img [ref=e63]
+            - generic [ref=e68]:
+              - generic [ref=e71]: Creating App.jsx
+              - separator [ref=e72]
+              - generic [ref=e73]:
+                - paragraph [ref=e74]: "Done! Created a beautiful Hello World website with:"
+                - list [ref=e75]:
+                  - listitem [ref=e76]: Large "Hello World" greeting in bold white text
+                  - listitem [ref=e77]: Vibrant gradient background (purple → pink → red)
+                  - listitem [ref=e78]: Welcoming message below the greeting
+                  - listitem [ref=e79]: Centered layout with drop shadows for depth
+                  - listitem [ref=e80]: Responsive design that works on all screen sizes
+        - generic [ref=e20]:
+          - textbox "Describe the React component you want to create..." [ref=e21]
+          - button [disabled] [ref=e22]:
+            - img [ref=e23]
+    - separator [ref=e26]
+    - generic [ref=e28]:
+      - tablist [ref=e31]:
+        - tab "Preview" [selected] [ref=e32]
+        - tab "Code" [ref=e33]
+      - iframe [ref=e81]:
+        - generic [ref=f2e4]:
+          - heading "Hello World" [level=1] [ref=f2e5]
+          - paragraph [ref=f2e6]: Welcome to a beautiful new experience. Let your creativity shine and explore endless possibilities.
+  - alert [ref=e44]

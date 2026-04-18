@@ -12,6 +12,7 @@ export class MockLanguageModel implements LanguageModelV1 {
   readonly provider = "mock";
   readonly modelId: string;
   readonly defaultObjectGenerationMode = "tool" as const;
+  readonly supportedUrls = {};
 
   constructor(modelId: string) {
     this.modelId = modelId;

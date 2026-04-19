@@ -1,6 +1,7 @@
 import type { FileNode } from '@/lib/file-system'
 import { VirtualFileSystem } from '@/lib/file-system'
-import { streamText } from 'ai'
+import { streamText, convertToModelMessages } from 'ai'
+import type { UIMessage } from 'ai'
 import { buildStrReplaceTool } from '@/lib/tools/str-replace'
 import { buildFileManagerTool } from '@/lib/tools/file-manager'
 import { getLanguageModel } from '@/lib/provider'
@@ -9,13 +10,7 @@ import { createClient } from '@/lib/supabase/server'
 
 export async function POST(req: Request) {
   const { messages, files, projectId }:
-    { messages: any[]; files: Record<string, FileNode>; projectId?: string } = await req.json()
-
-  messages.unshift({
-    role: 'system',
-    content: generationPrompt,
-    providerOptions: { anthropic: { cacheControl: { type: 'ephemeral' } } },
-  })
+    { messages: UIMessage[]; files: Record<string, FileNode>; projectId?: string } = await req.json()
 
   const fileSystem = new VirtualFileSystem()
   fileSystem.deserializeFromNodes(files)
@@ -23,9 +18,12 @@ export async function POST(req: Request) {
   const model = getLanguageModel()
   const isMockProvider = !process.env.ANTHROPIC_API_KEY
 
+  const modelMessages = await convertToModelMessages(messages)
+
   const result = streamText({
     model: model as any,
-    messages,
+    system: generationPrompt,
+    messages: modelMessages,
     maxOutputTokens: 10_000,
     stopWhen: (state: any) => state.steps.length >= (isMockProvider ? 4 : 40),
     onError: (err: any) => console.error(err),
@@ -41,7 +39,7 @@ export async function POST(req: Request) {
         if (!user) return
 
         const allMessages = [
-          ...messages.filter(m => m.role !== 'system'),
+          ...messages,
           ...(response.messages ?? []),
         ]
 
@@ -56,7 +54,7 @@ export async function POST(req: Request) {
     },
   })
 
-  return (result as any).toUIMessageStreamResponse?.() ?? result.toTextStreamResponse()
+  return result.toUIMessageStreamResponse()
 }
 
 export const maxDuration = 120

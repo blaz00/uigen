@@ -3,12 +3,17 @@
     "playwright": {
       "type": "stdio",
       "command": "npx",
-      "args": ["@playwright/mcp@latest"]
+      "args": [
+        "@playwright/mcp@latest"
+      ]
     },
     "github": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
       }
@@ -31,6 +36,10 @@
         "--db-path",
         "./prisma/dev.db"
       ]
+    },
+    "supabase": {
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp?project_ref=fevlqdwbkzxbcsehgzvm"
     }
   }
 }

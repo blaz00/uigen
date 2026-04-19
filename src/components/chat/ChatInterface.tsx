@@ -36,8 +36,8 @@ export function ChatInterface() {
         </ScrollArea>
       )}
       {error && (
-        <div className="mx-4 mb-2 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
-          Error: {error.message}
+        <div className="mx-4 mb-2 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700 break-all">
+          Error: {error.message || JSON.stringify(error) || error.toString() || '(unknown)'}
         </div>
       )}
       <div className="mt-4 flex-shrink-0">

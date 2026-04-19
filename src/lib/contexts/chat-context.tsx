@@ -57,7 +57,7 @@ export function ChatProvider({
       handleToolCall(toolCall as any);
     },
     onError: (err) => {
-      console.error('[Chat] Error:', err);
+      console.error('[Chat] Error:', err, JSON.stringify(err));
     },
   });
 

@@ -41,13 +41,24 @@ export async function POST(req: Request) {
         const { data: { user } } = await supabase.auth.getUser()
         if (!user) return
 
-        const allMessages = [
-          ...messages,
-          ...(response.messages ?? []),
-        ]
+        // Convert assistant CoreMessages to UIMessages for storage
+        const assistantUIMessages = response.messages
+          .filter((m: any) => m.role === 'assistant')
+          .map((m: any, i: number) => {
+            const text = Array.isArray(m.content)
+              ? m.content.filter((c: any) => c.type === 'text').map((c: any) => c.text).join('')
+              : String(m.content ?? '')
+            return {
+              id: `assistant-${Date.now()}-${i}`,
+              role: 'assistant' as const,
+              content: text,
+              parts: [{ type: 'text', text }],
+              createdAt: new Date(),
+            }
+          })
 
         await supabase.from('projects').update({
-          messages: allMessages,
+          messages: [...messages, ...assistantUIMessages],
           data: fileSystem.serialize(),
           updated_at: new Date().toISOString(),
         }).eq('id', projectId).eq('user_id', user.id)

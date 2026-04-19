@@ -9,6 +9,7 @@ import { generationPrompt } from '@/lib/prompts/generation'
 import { createClient } from '@/lib/supabase/server'
 
 export async function POST(req: Request) {
+  console.log('[/api/chat] POST received')
   const { messages, files, projectId }:
     { messages: UIMessage[]; files: Record<string, FileNode>; projectId?: string } = await req.json()
 

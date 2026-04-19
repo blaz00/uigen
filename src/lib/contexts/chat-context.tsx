@@ -25,6 +25,7 @@ interface ChatContextType {
   setInput: (value: string) => void;
   sendMessage: (text: string) => void;
   status: string;
+  error: Error | undefined;
 }
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -43,7 +44,7 @@ export function ChatProvider({
   useEffect(() => { fileSystemRef.current = fileSystem; }, [fileSystem]);
   useEffect(() => { projectIdRef.current = projectId; }, [projectId]);
 
-  const { messages, sendMessage: aiSendMessage, status } = useAIChat({
+  const { messages, sendMessage: aiSendMessage, status, error } = useAIChat({
     messages: initialMessages,
     transport: new DefaultChatTransport({
       api: "/api/chat",
@@ -54,6 +55,9 @@ export function ChatProvider({
     }),
     onToolCall: ({ toolCall }) => {
       handleToolCall(toolCall as any);
+    },
+    onError: (err) => {
+      console.error('[Chat] Error:', err);
     },
   });
 
@@ -78,6 +82,7 @@ export function ChatProvider({
         setInput,
         sendMessage,
         status,
+        error,
       }}
     >
       {children}

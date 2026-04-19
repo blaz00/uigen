@@ -9,10 +9,12 @@ export interface AuthResult {
   error?: string
 }
 
-export async function signUp(email: string, password: string): Promise<AuthResult> {
+export async function signUp(email: string, password: string): Promise<AuthResult & { needsConfirmation?: boolean }> {
   const supabase = await createClient()
-  const { error } = await supabase.auth.signUp({ email, password })
+  const { data, error } = await supabase.auth.signUp({ email, password })
   if (error) return { success: false, error: error.message }
+  // If session is null, email confirmation is required
+  if (!data.session) return { success: true, needsConfirmation: true }
   revalidatePath('/')
   return { success: true }
 }

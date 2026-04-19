@@ -16,6 +16,7 @@ export function SignUpForm({ onSuccess }: SignUpFormProps) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [needsConfirmation, setNeedsConfirmation] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,12 +30,28 @@ export function SignUpForm({ onSuccess }: SignUpFormProps) {
     const result = await signUp(email, password);
 
     if (result.success) {
-      // The redirect is handled by the hook
-      onSuccess?.();
+      if ((result as any).needsConfirmation) {
+        setNeedsConfirmation(true);
+      } else {
+        onSuccess?.();
+      }
     } else {
       setError(result.error || "Failed to sign up");
     }
   };
+
+  if (needsConfirmation) {
+    return (
+      <div className="text-center space-y-3 py-4">
+        <div className="text-4xl">📧</div>
+        <p className="font-medium text-neutral-900">Check your email</p>
+        <p className="text-sm text-neutral-500">
+          We sent a confirmation link to <strong>{email}</strong>.<br />
+          Click the link to activate your account, then sign in.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">

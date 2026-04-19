@@ -53,7 +53,7 @@ export function useAuth() {
     setIsLoading(true)
     try {
       const result = await signUpAction(email, password)
-      if (result.success) await handlePostSignIn()
+      if (result.success && !(result as any).needsConfirmation) await handlePostSignIn()
       return result
     } finally {
       setIsLoading(false)

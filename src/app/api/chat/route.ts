@@ -10,6 +10,7 @@ import { createClient } from '@/lib/supabase/server'
 
 export async function POST(req: Request) {
   console.log('[/api/chat] POST received')
+  try {
   const { messages, files, projectId }:
     { messages: UIMessage[]; files: Record<string, FileNode>; projectId?: string } = await req.json()
 
@@ -19,7 +20,8 @@ export async function POST(req: Request) {
   const model = getLanguageModel()
   const isMockProvider = !process.env.ANTHROPIC_API_KEY
 
-  const modelMessages = await convertToModelMessages(messages)
+  const supportedMessages = messages.filter((m: any) => ['user', 'assistant', 'system'].includes(m.role))
+  const modelMessages = await convertToModelMessages(supportedMessages)
 
   const result = streamText({
     model: model as any,
@@ -56,6 +58,13 @@ export async function POST(req: Request) {
   })
 
   return result.toUIMessageStreamResponse()
+  } catch (err: any) {
+    console.error('[/api/chat] Fatal error:', err)
+    return new Response(JSON.stringify({ error: err?.message ?? String(err) }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }
 }
 
 export const maxDuration = 120
